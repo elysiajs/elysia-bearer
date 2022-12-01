@@ -4,6 +4,7 @@ import { bearer } from '../src/index'
 
 const app = new KingWorld()
     .use(bearer())
+    .get('/', () => 'Bearer')
     .get('/sign', ({ bearer }) => bearer, {
         beforeHandle({ bearer, set }) {
             if (!bearer) {
