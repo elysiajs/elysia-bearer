@@ -1,11 +1,11 @@
-import { KingWorld } from 'kingworld'
+import { Elysia } from 'elysia'
 import { bearer } from '../src'
 
 import { describe, expect, it } from 'bun:test'
 
 const req = (path: string) => new Request(path)
 
-const app = new KingWorld()
+const app = new Elysia()
     .use(bearer())
     .get('/sign', ({ bearer }) => bearer, {
         beforeHandle({ bearer, set }) {
@@ -21,7 +21,7 @@ const app = new KingWorld()
     })
     .listen(8080)
 
-const nonRFC = new KingWorld()
+const nonRFC = new Elysia()
     .use(
         bearer({
             extract: {

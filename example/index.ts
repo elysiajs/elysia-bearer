@@ -1,8 +1,7 @@
-import KingWorld from 'kingworld'
-
+import { Elysia } from 'elysia'
 import { bearer } from '../src/index'
 
-const app = new KingWorld()
+const app = new Elysia()
     .use(bearer())
     .get('/', () => 'Bearer')
     .get('/sign', ({ bearer }) => bearer, {
