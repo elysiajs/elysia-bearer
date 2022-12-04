@@ -1,5 +1,5 @@
-# @kingworldjs/bearer
-A plugin for [kingworld](https://github.com/elysiajs/elysia) for retreiving Bearer token.
+# @elysiajs/bearer
+A plugin for [elysia](https://github.com/elysiajs/elysia) for retreiving Bearer token.
 
 This plugin is for retrieving a Bearer token specified in [RFC6750](https://www.rfc-editor.org/rfc/rfc6750#section-2).
 
@@ -7,15 +7,15 @@ This plugin **DOES NOT** handle authentication validation for your server, rathe
 
 ## Installation
 ```bash
-bun add @kingworldjs/bearer
+bun add @elysiajs/bearer
 ```
 
 ## Example
 ```typescript
-import { KingWorld } from 'kingworld'
-import { bearer } from '@kingworldjs/bearer'
+import { Elysia } from 'elysia'
+import { bearer } from '@elysiajs/bearer'
 
-const app = new KingWorld()
+const app = new Elysia()
     .use(bearer())
     .get('/sign', ({ bearer }) => bearer, {
         beforeHandle({ bearer, set }) {
