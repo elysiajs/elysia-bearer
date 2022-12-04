@@ -1,4 +1,4 @@
-import { KingWorld, type Context } from 'kingworld'
+import { Elysia, type Context } from 'elysia'
 
 export interface BearerOptions {
     /**
@@ -47,7 +47,7 @@ export const bearer =
             }
         }
     ) =>
-    (app: KingWorld) =>
+    (app: Elysia) =>
         app.inject((context) => ({
             get bearer() {
                 const authorization =

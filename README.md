@@ -1,5 +1,5 @@
 # @kingworldjs/bearer
-A plugin for [kingworld](https://github.com/saltyaom/kingworld) for retreiving Bearer token.
+A plugin for [kingworld](https://github.com/elysiajs/elysia) for retreiving Bearer token.
 
 This plugin is for retrieving a Bearer token specified in [RFC6750](https://www.rfc-editor.org/rfc/rfc6750#section-2).
 
