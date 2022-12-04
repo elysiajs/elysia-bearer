@@ -1,7 +1,7 @@
 {
   "name": "@elysiajs/bearer",
   "version": "0.0.0-experimental.1",
-  "description": "A plugin for Elysia for retreiving Bearer token",
+  "description": "Plugin for Elysia for retreiving Bearer token",
   "author": {
     "name": "saltyAom",
     "url": "https://github.com/SaltyAom",
