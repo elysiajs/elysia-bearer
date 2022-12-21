@@ -1,5 +1,5 @@
 # @elysiajs/bearer
-Plugin for [elysia](https://github.com/elysiajs/elysia) for retreiving Bearer token.
+Plugin for [elysia](https://github.com/elysiajs/elysia) for retrieving Bearer token.
 
 This plugin is for retrieving a Bearer token specified in [RFC6750](https://www.rfc-editor.org/rfc/rfc6750#section-2).
 

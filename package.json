@@ -1,6 +1,6 @@
 {
   "name": "@elysiajs/bearer",
-  "version": "0.1.0-rc.4",
+  "version": "0.1.0-rc.5",
   "description": "Plugin for Elysia for retreiving Bearer token",
   "author": {
     "name": "saltyAom",
@@ -9,7 +9,7 @@
   },
   "main": "./dist/index.js",
   "exports": {
-    "require": "./dist/cjs/index.js",
+    "require": "./dist/index.js",
     "import": "./dist/index.js",
     "node": "./dist/index.js",
     "default": "./dist/index.js"
