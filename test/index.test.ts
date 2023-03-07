@@ -3,7 +3,7 @@ import { bearer } from '../src'
 
 import { describe, expect, it } from 'bun:test'
 
-const req = (path: string) => new Request(path)
+const req = (path: string) => new Request(`http://localhost:8080${path}`)
 
 const app = new Elysia()
     .use(bearer())
@@ -49,7 +49,7 @@ describe('Bearer', () => {
     it('parse bearer from header', async () => {
         const res = await app
             .handle(
-                new Request('/sign', {
+                new Request('http://localhost/sign', {
                     headers: {
                         Authorization: 'Bearer saltyAom'
                     }
@@ -62,7 +62,7 @@ describe('Bearer', () => {
 
     it("don't parse empty Bearer header", async () => {
         const res = await app.handle(
-            new Request('/sign', {
+            new Request('http://localhost/sign', {
                 headers: {
                     Authorization: 'Bearer '
                 }
@@ -74,7 +74,7 @@ describe('Bearer', () => {
 
     it('parse bearer from query', async () => {
         const res = await app
-            .handle(new Request('/sign?access_token=saltyAom'))
+            .handle(new Request('http://localhost/sign?access_token=saltyAom'))
             .then((r) => r.text())
 
         expect(res).toBe('saltyAom')
@@ -83,7 +83,7 @@ describe('Bearer', () => {
     it('parse bearer from custom header', async () => {
         const res = await nonRFC
             .handle(
-                new Request('/sign', {
+                new Request('http://localhost/sign', {
                     headers: {
                         Authorization: 'a saltyAom'
                     }
@@ -96,7 +96,7 @@ describe('Bearer', () => {
 
     it('parse bearer from custom query', async () => {
         const res = await nonRFC
-            .handle(new Request('/sign?a=saltyAom'))
+            .handle(new Request('http://localhost/sign?a=saltyAom'))
             .then((r) => r.text())
 
         expect(res).toBe('saltyAom')
