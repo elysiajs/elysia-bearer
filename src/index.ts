@@ -48,7 +48,7 @@ export const bearer =
         }
     ) =>
     (app: Elysia) =>
-        app.inject((context) => ({
+        app.derive((context) => ({
             get bearer() {
                 const authorization =
                     context.request.headers.get('Authorization')
