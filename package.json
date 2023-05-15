@@ -1,6 +1,6 @@
 {
   "name": "@elysiajs/bearer",
-  "version": "0.3.0",
+  "version": "0.5.0-rc.1",
   "description": "Plugin for Elysia for retreiving Bearer token",
   "author": {
     "name": "saltyAom",
@@ -30,18 +30,18 @@
   "scripts": {
     "dev": "bun run --hot example/index.ts",
     "test": "bun wiptest",
-    "build": "rimraf dist && tsc --project tsconfig.esm.json",
+    "build": "rimraf dist && tsc --project tsconfig.esm.json && tsc --project tsconfig.cjs.json",
     "release": "npm run build && npm run test && npm publish --access public"
   },
   "peerDependencies": {
-    "elysia": ">= 0.1.0-rc.5"
+    "elysia": ">= 0.5.0-beta.3"
   },
   "devDependencies": {
-    "@types/node": "^18.11.7",
+    "@types/node": "^20.1.4",
     "bun-types": "^0.5.8",
-    "elysia": "^0.3.0",
-    "eslint": "^8.26.0",
-    "rimraf": "^3.0.2",
-    "typescript": "^4.8.4"
+    "elysia": "0.5.0-beta.3",
+    "eslint": "^8.40.0",
+    "rimraf": "4.3.1",
+    "typescript": "^5.0.4"
   }
 }

@@ -48,18 +48,12 @@ export const bearer =
         }
     ) =>
     (app: Elysia) =>
-        app.derive((context) => ({
+        app.derive(({ query: queries, headers: { authorization } }) => ({
             get bearer() {
-                const authorization =
-                    context.request.headers.get('Authorization')
-                if (authorization?.startsWith(header))
-                    return authorization.slice(header.length + 1)
+                if ((authorization as string)?.startsWith(header))
+                    return (authorization as string).slice(header.length + 1)
 
-                // ? No Form-Encoded Body Parameter support atm, skip
-
-                const q = (context.query as Record<string, string> | null)?.[
-                    query
-                ]
+                const q = queries[query]
                 if (q) return q
             }
         }))
