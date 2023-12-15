@@ -19,7 +19,6 @@ const app = new Elysia()
             }
         }
     })
-    .listen(8080)
 
 const nonRFC = new Elysia()
     .use(
@@ -43,7 +42,6 @@ const nonRFC = new Elysia()
             }
         }
     })
-    .listen(8080)
 
 describe('Bearer', () => {
     it('parse bearer from header', async () => {

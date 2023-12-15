@@ -27,35 +27,40 @@ export interface BearerOptions {
     }
 }
 
-export const bearer =
-    (
-        {
-            extract: {
-                body = 'access_token',
-                query = 'access_token',
-                header = 'Bearer'
-            } = {
-                body: 'access_token',
-                query: 'access_token',
-                header: 'Bearer'
-            }
-        }: BearerOptions = {
-            extract: {
-                body: 'access_token',
-                query: 'access_token',
-                header: 'Bearer'
-            }
+export const bearer = (
+    {
+        extract: {
+            body = 'access_token',
+            query = 'access_token',
+            header = 'Bearer'
+        } = {
+            body: 'access_token',
+            query: 'access_token',
+            header: 'Bearer'
         }
-    ) =>
-    (app: Elysia) =>
-        app.derive(({ query: queries, headers: { authorization } }) => ({
-            get bearer() {
-                if ((authorization as string)?.startsWith(header))
-                    return (authorization as string).slice(header.length + 1)
+    }: BearerOptions = {
+        extract: {
+            body: 'access_token',
+            query: 'access_token',
+            header: 'Bearer'
+        }
+    }
+) =>
+    new Elysia({
+        name: '@elysiajs/bearer',
+        seed: {
+            body,
+            query,
+            header
+        }
+    }).derive(({ query: queries, headers: { authorization } }) => ({
+        get bearer() {
+            if ((authorization as string)?.startsWith(header))
+                return (authorization as string).slice(header.length + 1)
 
-                const q = queries[query]
-                if (q) return q
-            }
-        }))
+            const q = queries[query]
+            if (q) return q
+        }
+    }))
 
 export default bearer
