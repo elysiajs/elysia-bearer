@@ -31,7 +31,7 @@ export const bearer = (
     {
         extract: {
             body = 'access_token',
-            query = 'access_token',
+            query: queryName = 'access_token',
             header = 'Bearer'
         } = {
             body: 'access_token',
@@ -50,15 +50,15 @@ export const bearer = (
         name: '@elysiajs/bearer',
         seed: {
             body,
-            query,
+            query: queryName,
             header
         }
-    }).derive(({ query: queries, headers: { authorization } }) => ({
+    }).derive({ as: 'global' }, ({ query, headers: { authorization } }) => ({
         get bearer() {
             if ((authorization as string)?.startsWith(header))
                 return (authorization as string).slice(header.length + 1)
 
-            const q = queries[query]
+            const q = query[queryName]
             if (q) return q
         }
     }))

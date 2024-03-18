@@ -1,7 +1,7 @@
 import { Elysia } from 'elysia'
 import { bearer } from '../src/index'
 
-const app = new Elysia()
+const app = new Elysia({ precompile: true })
     .use(bearer())
     .get('/', () => 'Bearer')
     .get('/sign', ({ bearer }) => bearer, {
