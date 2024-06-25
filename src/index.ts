@@ -1,4 +1,4 @@
-import { Elysia, type Context } from 'elysia'
+import { Elysia } from 'elysia'
 
 export interface BearerOptions {
     /**
@@ -53,13 +53,16 @@ export const bearer = (
             query: queryName,
             header
         }
-    }).derive({ as: 'global' }, ({ query, headers: { authorization } }) => ({
+    }).derive({ as: 'global' }, ({ query, headers: { authorization: authorizationHeader } }) => ({
         get bearer() {
-            if ((authorization as string)?.startsWith(header))
-                return (authorization as string).slice(header.length + 1)
 
-            const q = query[queryName]
-            if (q) return q
+            if (authorizationHeader?.startsWith(header))
+                return authorizationHeader.slice(header.length + 1)
+
+            const tokenFromQuery = query[queryName]
+            if (tokenFromQuery) return tokenFromQuery;
+
+            return;
         }
     }))
 
