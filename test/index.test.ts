@@ -2,9 +2,6 @@ import { Elysia } from 'elysia'
 import { bearer } from '../src'
 
 import { describe, expect, it } from 'bun:test'
-
-const req = (path: string) => new Request(`http://localhost:8080${path}`)
-
 const app = new Elysia()
     .use(bearer())
     .get('/sign', ({ bearer }) => bearer, {
@@ -13,7 +10,7 @@ const app = new Elysia()
                 set.status = 400
                 set.headers[
                     'WWW-Authenticate'
-                ] = `Bearer realm='sign', error="invalid_request"`
+                    ] = `Bearer realm='sign', error="invalid_request"`
 
                 return 'Unauthorized'
             }
@@ -36,7 +33,7 @@ const nonRFC = new Elysia()
                 set.status = 400
                 set.headers[
                     'WWW-Authenticate'
-                ] = `Bearer realm='sign', error="invalid_request"`
+                    ] = `Bearer realm='sign', error="invalid_request"`
 
                 return 'Unauthorized'
             }
