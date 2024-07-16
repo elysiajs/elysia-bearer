@@ -1,3 +1,6 @@
+# 1.1.1 - 16 Jul 2024
+Change:
+- Accept only first bearer query
 
 # 1.1.0 - 16 Jul 2024
 Change:

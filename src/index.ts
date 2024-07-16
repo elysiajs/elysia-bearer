@@ -1,4 +1,4 @@
-import { Elysia, type Context } from "elysia";
+import { Elysia, type Context } from 'elysia'
 
 export interface BearerOptions {
 	/**
@@ -11,63 +11,65 @@ export interface BearerOptions {
 		 *
 		 * @default access_token
 		 */
-		body?: string;
+		body?: string
 		/**
 		 * Determined which fields to be identified as Bearer token
 		 *
 		 * @default access_token
 		 */
-		query?: string;
+		query?: string
 		/**
 		 * Determined which type of Authentication should be Bearer token
 		 *
 		 * @default Bearer
 		 */
-		header?: string;
-	};
+		header?: string
+	}
 }
 
 export const bearer = (
 	{
 		extract: {
-			body = "access_token",
-			query: queryName = "access_token",
-			header = "Bearer",
+			body = 'access_token',
+			query: queryName = 'access_token',
+			header = 'Bearer'
 		} = {
-			body: "access_token",
-			query: "access_token",
-			header: "Bearer",
-		},
+			body: 'access_token',
+			query: 'access_token',
+			header: 'Bearer'
+		}
 	}: BearerOptions = {
 		extract: {
-			body: "access_token",
-			query: "access_token",
-			header: "Bearer",
-		},
-	},
+			body: 'access_token',
+			query: 'access_token',
+			header: 'Bearer'
+		}
+	}
 ) =>
 	new Elysia({
-		name: "@elysiajs/bearer",
+		name: '@elysiajs/bearer',
 		seed: {
 			body,
 			query: queryName,
-			header,
-		},
+			header
+		}
 	}).derive(
-		{ as: "global" },
+		{ as: 'global' },
 		function deriveBearer({ query, headers: { authorization } }) {
 			return {
 				get bearer() {
 					if ((authorization as string)?.startsWith(header))
 						return (authorization as string).slice(
-							header.length + 1,
-						);
+							header.length + 1
+						)
 
-					const q = query[queryName];
-					if (q) return q;
-				},
-			};
-		},
-	);
+					const q = query[queryName]
 
-export default bearer;
+					if(Array.isArray(q)) return q[0]
+					if (q) return q
+				}
+			}
+		}
+	)
+
+export default bearer
