@@ -53,23 +53,21 @@ export const bearer = (
 			query: queryName,
 			header
 		}
-	}).derive(
-		{ as: 'global' },
-		function deriveBearer({ query, headers: { authorization } }) {
-			return {
-				get bearer() {
-					if ((authorization as string)?.startsWith(header))
-						return (authorization as string).slice(
-							header.length + 1
-						)
+	}).derive({ as: 'global' }, function deriveBearer(ctx: Context) {
+		const { query, headers } = ctx
+		const { authorization } = headers
 
-					const q = query[queryName]
+		return {
+			get bearer() {
+				if ((authorization as string)?.startsWith(header))
+					return (authorization as string).slice(header.length + 1)
 
-					if(Array.isArray(q)) return q[0]
-					if (q) return q
-				}
+				const q = query[queryName]
+
+				if (Array.isArray(q)) return q[0]
+				if (q) return q
 			}
 		}
-	)
+	})
 
 export default bearer
