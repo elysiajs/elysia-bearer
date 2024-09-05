@@ -1,3 +1,7 @@
+# 1.1.2 - 5 Sep 2024
+Feature:
+- add provenance publish
+
 # 1.1.1 - 16 Jul 2024
 Change:
 - Accept only first bearer query
