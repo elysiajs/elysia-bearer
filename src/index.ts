@@ -63,9 +63,9 @@ export const bearer = (
 							header.length + 1
 						)
 
-					const q = query[queryName]
+					const q = query[queryName] as string | string[] | undefined
 
-					if(Array.isArray(q)) return q[0]
+					if (Array.isArray(q)) return q[0]
 					if (q) return q
 				}
 			}
