@@ -1,3 +1,7 @@
+# 1.4.2 - 14 Dec 2025
+Bug fix:
+- set min Elysia version to 1.4.3
+
 # 1.4.1 - 13 Sep 2025
 Bug fix:
 - Fix issue with multiple bearer tokens in query parameters
