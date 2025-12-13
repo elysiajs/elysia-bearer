@@ -1,19 +1,18 @@
 import { Elysia } from 'elysia'
 import { bearer } from '../src/index'
 
-const app = new Elysia({ precompile: true })
+const app = new Elysia()
     .use(bearer())
     .get('/', () => 'Bearer')
     .get('/sign', ({ bearer }) => bearer, {
-        beforeHandle({ bearer, set }) {
+        beforeHandle({ bearer, set, status }) {
             if (!bearer) {
-                set.status = 400
                 set.headers[
                     'WWW-Authenticate'
                 ] = `Bearer realm='sign', error="invalid_request"`
 
-                return 'Unauthorized'
+                return status(400, 'Unauthorized')
             }
         }
     })
-    .listen(8080)
+    .listen(3000)
