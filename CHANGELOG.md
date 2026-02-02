@@ -1,3 +1,7 @@
+# 1.4.3 - 2 Feb 2025
+Bug fix:
+- update minimum Elysia to 1.4.19
+
 # 1.4.2 - 14 Dec 2025
 Bug fix:
 - set min Elysia version to 1.4.3
