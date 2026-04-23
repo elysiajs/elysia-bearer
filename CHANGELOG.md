@@ -1,4 +1,8 @@
-# 1.4.3 - 2 Feb 2025
+# 1.4.4 - 24 Apr 2026
+Chore:
+- publish under @elysia scope
+
+# 1.4.3 - 2 Feb 2026
 Bug fix:
 - update minimum Elysia to 1.4.19
 

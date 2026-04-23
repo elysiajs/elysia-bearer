@@ -1,7 +1,7 @@
 {
-    "name": "@elysiajs/bearer",
-    "version": "1.4.3",
-    "description": "Plugin for Elysia for retreiving Bearer token",
+    "name": "@elysia/bearer",
+    "version": "1.4.4",
+    "description": "Elysia Pplugin for retreiving Bearer token",
     "license": "MIT",
     "scripts": {
         "dev": "bun run --watch example/index.ts",
