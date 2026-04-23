@@ -1,5 +1,5 @@
-# @elysiajs/bearer
-Plugin for [elysia](https://github.com/elysiajs/elysia) for retrieving Bearer token.
+# @elysia/bearer
+[Elysia](https://github.com/elysiajs/elysia) plugin to retrieve Bearer token.
 
 This plugin is for retrieving a Bearer token specified in [RFC6750](https://www.rfc-editor.org/rfc/rfc6750#section-2).
 
@@ -7,13 +7,13 @@ This plugin **DOES NOT** handle authentication validation for your server, rathe
 
 ## Installation
 ```bash
-bun add @elysiajs/bearer
+bun add @elysia/bearer
 ```
 
 ## Example
 ```typescript
 import { Elysia } from 'elysia'
-import { bearer } from '@elysiajs/bearer'
+import { bearer } from '@elysia/bearer'
 
 const app = new Elysia()
     .use(bearer())
