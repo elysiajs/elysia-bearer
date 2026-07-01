@@ -1,6 +1,6 @@
 {
     "name": "@elysia/bearer",
-    "version": "1.4.4",
+    "version": "2.0.0-exp.0",
     "description": "Elysia plugin to retrieve Bearer token",
     "license": "MIT",
     "scripts": {
@@ -11,16 +11,16 @@
         "release": "npm run build && npm run test && npm publish --access public"
     },
     "peerDependencies": {
-        "elysia": ">= 1.4.3"
+        "elysia": ">= 2.0.0-exp.23"
     },
     "devDependencies": {
-        "@types/bun": "1.3.1",
-        "elysia": "1.4.19",
+        "@types/bun": "^1.3.14",
+        "elysia": "^2.0.0-exp.23",
         "eslint": "^9.38.0",
-        "tsup": "^8.5.0",
+        "tsdown": "^0.22.3",
         "typescript": "^5.9.3"
     },
-    "main": "./dist/cjs/index.js",
+    "main": "./dist/index.js",
     "module": "./dist/index.mjs",
     "types": "./dist/index.d.ts",
     "exports": {
@@ -28,7 +28,7 @@
         ".": {
             "types": "./dist/index.d.ts",
             "import": "./dist/index.mjs",
-            "require": "./dist/cjs/index.js"
+            "require": "./dist/index.js"
         }
     },
     "keywords": [

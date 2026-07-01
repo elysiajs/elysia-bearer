@@ -53,9 +53,7 @@ export const bearer = (
 			query: queryName,
 			header
 		}
-	}).derive(
-		{ as: 'global' },
-		function deriveBearer({ query, headers: { authorization } }) {
+	}).derive('global', function deriveBearer({ query, headers: { authorization } }) {
 			return {
 				get bearer() {
 					if ((authorization as string)?.startsWith(header))
@@ -69,7 +67,6 @@ export const bearer = (
 					if (q) return q
 				}
 			}
-		}
-	)
+		})
 
 export default bearer

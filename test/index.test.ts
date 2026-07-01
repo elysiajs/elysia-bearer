@@ -7,18 +7,18 @@ const req = (path: string) => new Request(`http://localhost:8080${path}`)
 
 const app = new Elysia()
     .use(bearer())
-    .get('/sign', ({ bearer }) => bearer, {
+    .get('/sign', {
         beforeHandle({ bearer, set }) {
             if (!bearer) {
                 set.status = 400
                 set.headers[
                     'WWW-Authenticate'
                 ] = `Bearer realm='sign', error="invalid_request"`
-
+    
                 return 'Unauthorized'
             }
         }
-    })
+    }, ({ bearer }) => bearer)
 
 const nonRFC = new Elysia()
     .use(
@@ -30,18 +30,18 @@ const nonRFC = new Elysia()
             }
         })
     )
-    .get('/sign', ({ bearer }) => bearer, {
+    .get('/sign', {
         beforeHandle({ bearer, set }) {
             if (!bearer) {
                 set.status = 400
                 set.headers[
                     'WWW-Authenticate'
                 ] = `Bearer realm='sign', error="invalid_request"`
-
+    
                 return 'Unauthorized'
             }
         }
-    })
+    }, ({ bearer }) => bearer)
 
 describe('Bearer', () => {
     it('parse bearer from header', async () => {
